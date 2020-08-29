@@ -1,4 +1,16 @@
-const GET = (req,res) => {
+import { Operation } from "express-openapi";
+
+export const parameters = [
+    {
+      in: 'path',
+      name: 'battle_id',
+      required: true,
+      type: 'string'
+    }
+  ];
+
+
+export const GET: Operation = (req:any,res:any) => {
     res.status(200);
     res.json({potato: 1});
 }
@@ -6,7 +18,7 @@ const GET = (req,res) => {
 GET.apiDoc = {
   description: 'Get current state of a battle',
   operationId: 'getBattle',
-  responses: {
+   responses: {
     default: {
         description: "An error occurred",
         schema: {
@@ -16,17 +28,3 @@ GET.apiDoc = {
   }
 };
 
-module.exports =  () => {
-    return {
-        GET,
-  parameters: [
-    {
-      in: 'path',
-      name: 'battle_id',
-      required: true,
-      type: 'string'
-    }
-  ]
-    };
-
-};

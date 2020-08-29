@@ -4,34 +4,35 @@ import path from "path";
 import bodyParser from "body-parser";
 import swaggerUi from "swagger-ui-express";
 
-import v1ApiDoc from "./api-server/v1/api-doc";
-    console.log(path.resolve(__dirname, "api-server/v1/paths"));
+import v1ApiDoc from "./api/api-doc";
 
-export default (app) => {
+type Config = {
+    prefix: string;
+}
+
+export default (config: Config) => {
+
+    const app = express();
 
     app.use(bodyParser.json());
 
     app.use(
-    "/api/ui",
+    "/ui",
     swaggerUi.serve,
-    swaggerUi.setup(null, {
-        swaggerOptions: { url: "/api/api-docs" },
+    swaggerUi.setup(undefined, {
+        swaggerOptions: { url: `${config.prefix}/api-docs` },
     })
     );
 
+
 initialize({
   app,
-  apiDoc: v1ApiDoc,
+  apiDoc: v1ApiDoc(config),
   promiseMode: true,
   dependencies: {
   },
-  paths: [
-      {
-          path: '/battle/{battle_id}',
-          module: require('../../../src/server/api-server/v1/paths/battle/__battle_id__')
-      }
-  ],
-  routesGlob: "**/*.js",
+  paths: './dist/api/paths',
+  routesGlob: "**/*.{t,j}s",
   pathsIgnore: new RegExp("test$"),
 } );
 
