@@ -17,10 +17,9 @@ export default class Battles {
         return this.#pouch.get(battle_id);
     }
 
-    async createBattle(initial_state: any) {
-        const _id = initial_state.game.name;
+    async createBattle(battle_id: string, initial_state: any) {
         return this.#pouch.put({
-            _id,
+            _id: battle_id,
             ...initial_state,
         });
     }

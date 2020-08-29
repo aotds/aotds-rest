@@ -1,24 +1,31 @@
 {
   "name": "aotds-rest",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Restful server for AotDS",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint:prettier": "prettier -c src",
+    "lint:prettier:fix": "prettier --write src"
   },
   "keywords": [],
   "author": "Yanick Champoux <yanick@babyl.ca> (http://techblog.babyl.ca)",
   "license": "ISC",
   "devDependencies": {
+    "@types/express-boom": "^3.0.0",
+    "@types/pouchdb": "^6.4.0",
     "@types/node": "^14.6.2",
     "@types/swagger-ui-express": "^4.1.2",
-    "express-openapi": "^7.0.1",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "prettier": "^2.0.5"
   },
   "dependencies": {
+    "express-openapi": "^7.0.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "express-boom": "^3.0.0",
+    "pouchdb": "^7.2.2",
     "swagger-ui-express": "^4.1.4"
-  }
+  },
+  "types": "./dist/index.d.ts"
 }

@@ -1,4 +1,4 @@
-import { Operation } from "express-openapi";
+import { Operation, OperationFunction } from "express-openapi";
 import { Request } from "express";
 import Battles from "../../../services/battles";
 
@@ -13,8 +13,6 @@ export const parameters = [
 
 export default (battles: Battles) => {
   const GET: Operation = async (req: Request, res: any) => {
-    console.log(req.params);
-
     try {
       const battle = await battles.getBattle(req.params.battle_id);
       res.json(battle);
@@ -36,7 +34,29 @@ export default (battles: Battles) => {
     },
   };
 
+  const POST: OperationFunction = async(req: Request,res: any) => {
+      await battles.createBattle(
+        req.params.battle_id, req.body
+      );
+
+      res.json(req.body);
+  };
+
+  POST.apiDoc = {
+    description: "Create a new battle",
+    operationId: "postBattle",
+    responses: {
+      default: {
+        description: "An error occurred",
+        schema: {
+          additionalProperties: true,
+        },
+      },
+    },
+  };
+
   return {
     GET,
+    POST,
   };
 };
