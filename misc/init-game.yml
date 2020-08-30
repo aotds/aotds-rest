@@ -1,0 +1,41 @@
+game:
+    name: gemini
+ships:
+    - name: Enkidu
+      player_id: yanick
+      drive: 6
+      structure:
+          hull: 4
+          armor: 4
+      weaponry:
+          firecons: 1
+          shields: [ 1, 2 ]
+          weapons:
+              - type: beam
+                class: 2
+                arcs: F
+              - type: beam
+                class: 1
+                arcs: FP
+              - type: beam
+                class: 1
+                arcs: FS
+    - name: Siduri
+      player_id: yenzie
+      drive: 6
+      structure:
+          hull: 4
+          armor: 4
+      weaponry:
+          firecons: 1
+          shields: [ 1, 2 ]
+          weapons:
+              - type: beam
+                class: 2
+                arcs: F
+              - type: beam
+                class: 1
+                arcs: FP
+              - type: beam
+                class: 1
+                arcs: FS

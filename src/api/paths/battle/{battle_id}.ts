@@ -1,4 +1,5 @@
 import { Operation, OperationFunction } from "express-openapi";
+
 import { Request } from "express";
 import Battles from "../../../services/battles";
 
@@ -34,12 +35,10 @@ export default (battles: Battles) => {
     },
   };
 
-  const POST: OperationFunction = async(req: Request,res: any) => {
-      await battles.createBattle(
-        req.params.battle_id, req.body
-      );
+  const POST: OperationFunction = async (req: Request, res: any) => {
+    const battle = await battles.createBattle(req.params.battle_id, req.body);
 
-      res.json(req.body);
+    res.json(battle.getState());
   };
 
   POST.apiDoc = {

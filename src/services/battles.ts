@@ -1,4 +1,5 @@
 import PouchDB from 'pouchdb';
+import { battleDux } from '@aotds/aotds-battle';
 
 type Config = {
     pouch_root: string;
@@ -14,14 +15,23 @@ export default class Battles {
 
 
     async getBattle(battle_id: string) {
-        return this.#pouch.get(battle_id);
+        const state = await this.#pouch.get(battle_id);
+        return battleDux.createStore(state);
     }
 
     async createBattle(battle_id: string, initial_state: any) {
-        return this.#pouch.put({
+        const battle = battleDux.createStore();
+
+        battle.dispatch(
+            battle.actions.init_game(initial_state)
+        );
+
+        await this.#pouch.put({
             _id: battle_id,
-            ...initial_state,
+            ...battle.getState(),
         });
+
+        return battle;
     }
 
 }

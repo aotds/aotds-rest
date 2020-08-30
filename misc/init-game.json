@@ -1,0 +1,73 @@
+{
+   "game" : {
+      "name" : "gemini"
+   },
+   "ships" : [
+      {
+         "drive" : 6,
+         "name" : "Enkidu",
+         "player_id" : "yanick",
+         "structure" : {
+            "armor" : 4,
+            "hull" : 4
+         },
+         "weaponry" : {
+            "firecons" : 1,
+            "shields" : [
+               1,
+               2
+            ],
+            "weapons" : [
+               {
+                  "arcs" : "F",
+                  "class" : 2,
+                  "type" : "beam"
+               },
+               {
+                  "arcs" : "FP",
+                  "class" : 1,
+                  "type" : "beam"
+               },
+               {
+                  "arcs" : "FS",
+                  "class" : 1,
+                  "type" : "beam"
+               }
+            ]
+         }
+      },
+      {
+         "drive" : 6,
+         "name" : "Siduri",
+         "player_id" : "yenzie",
+         "structure" : {
+            "armor" : 4,
+            "hull" : 4
+         },
+         "weaponry" : {
+            "firecons" : 1,
+            "shields" : [
+               1,
+               2
+            ],
+            "weapons" : [
+               {
+                  "arcs" : "F",
+                  "class" : 2,
+                  "type" : "beam"
+               },
+               {
+                  "arcs" : "FP",
+                  "class" : 1,
+                  "type" : "beam"
+               },
+               {
+                  "arcs" : "FS",
+                  "class" : 1,
+                  "type" : "beam"
+               }
+            ]
+         }
+      }
+   ]
+}
