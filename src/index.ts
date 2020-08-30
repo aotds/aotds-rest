@@ -21,7 +21,7 @@ export default (config: Config) => {
   app.use(bodyParser.json());
 
   app.use(
-    "/ui",
+    `${config.prefix}/ui`,
     swaggerUi.serve,
     swaggerUi.setup(undefined, {
       swaggerOptions: { url: `${config.prefix}/api-docs` },
@@ -35,7 +35,7 @@ export default (config: Config) => {
     apiDoc: v1ApiDoc(config),
     promiseMode: true,
     dependencies: { battles },
-    paths: "./dist/api/paths",
+    paths: __dirname + "/api/paths",
     routesGlob: "**/*.{t,j}s",
     pathsIgnore: new RegExp("test$"),
   });
