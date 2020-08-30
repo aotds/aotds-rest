@@ -1,5 +1,5 @@
 {
-  "name": "aotds-rest",
+  "name": "@aotds/aotds-rest",
   "version": "0.0.1",
   "description": "Restful server for AotDS",
   "main": "dist/index.js",
